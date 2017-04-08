@@ -1,0 +1,25 @@
+{
+  "name": "clear",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "firebase": "^3.7.3",
+    "mongoose": "^4.9.0",
+    "socket.io": "^1.7.3",
+    "express-handlebars": "^3.0.0"
+
+  },
+  "engines": {
+    "node": "6.10.1"
+  }
+}

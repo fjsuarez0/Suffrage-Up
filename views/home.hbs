@@ -1,0 +1,95 @@
+  <html>
+  <head>
+    <title>Express handlebars</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="/style.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript">
+    </script>
+    <div id="messages"></div>
+    <div class="navbar">
+            <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+              <button type="button" id="sing-up" class="btn btn-success btn-sm" name="button"><strong>Sign Up</strong><strong id="noVe"></strong></button>
+              </li>
+                <li></li>
+
+              <li>
+              <button type="button" id="sing-out" class="btn btn-danger btn-sm" name="button"><strong>Sign Out</strong><strong id="noVe"></strong></button>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+    
+    </div>
+    <div class="container">
+
+      <div class="row" align="center">
+        <div class="jumbotron">
+          <h1>¿Eres Gay?</h1>
+          <p class="text-muted">Winner Option:<br/ ><strong id="winnerOpt">No se</strong></p>
+
+        </div>
+        <div class="col-md-4 well">
+
+          <button type="button" id="si" class="btn btn-info btn-lg" name="button"><strong>Si:</strong><strong id="siV"></strong></button>
+        </div>
+        <div class="col-md-4 well ">
+          <button type="button" id="noSe" class="btn btn-warning btn-lg" name="button"><strong>No se:</strong><strong id="noSeV"></strong></button>
+        </div>
+        <div class="col-md-4 well">
+
+          <button type="button" id="no" class="btn btn-danger btn-lg" name="button"><strong>No:</strong><strong id="noV"></strong></button>
+        </div>
+        <script src="main.js"></script>
+        <script src="actions.js"></script>
+
+      </div>
+
+    </div>
+  </body>
+</html>
