@@ -25,7 +25,11 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('public'))
 // Middleswares Configuration
 
-mongoose.connect('mongodb://americo:qwerty@ds143030.mlab.com:43030/app-lap')
+mongoose.connect('mongodb://americo:qwerty@ds143030.mlab.com:43030/app-lap', (err) => {
+  if(err){
+    console.log(err)
+  }
+})
 
 const date = new Date
 
