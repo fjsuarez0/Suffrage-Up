@@ -52,9 +52,11 @@ app.get('/', (req, res)=>{
 // APP
 
 /// Real Time
-server.listen(6969, () => {
+
+server.listen(port, () => {
   console.log('¿Hey Como estan las cosas?')
 })
+
 io.on('connection', (socket) => {
   console.log('cliente conectado')
   socket.emit('messages', 'Epa todo salio bien')
