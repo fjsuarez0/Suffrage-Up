@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const voteSchemaJson = {
   vote: Number,
-  date: Date
+  date: String
 }
 
 const voteSchema = new Schema(voteSchemaJson)

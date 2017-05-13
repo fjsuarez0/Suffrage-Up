@@ -1,7 +1,6 @@
 (function worker(){
     var request = $.ajax({
-                    url: "https://votation-up.herokuapp.com/winner",
-                    method: "get",
+                    url: "http://localhost:5000/winner",
                     dataType: "text"
                   });
                   request.done(function( msg ) {
@@ -10,30 +9,31 @@
                     });
                   
                   request.complete(function(){
-                    setTimeout(worker, 5000);
-                    })
+                    setTimeout(worker, 2000);
+                  })
 })()
-
+// https://votation-up.herokuapp.com/winner
 $("#si").click(function(){
-  $.get("https://votation-up.herokuapp.com/si", function( data, err ) {
+  ///$.get("https://votation-up.herokuapp.com/si", function( data, err ) {
+    $.get("http://localhost:5000/si", function( data, err ) {
     if(!err) throw  err
-    $('#siV').html(' '+data)
-    console.log(data)
+    $('#siV').html(data)
+    console.log("Sí: "+data)
     });
 })
 
 $("#no").click(function(){
-  $.get("https://votation-up.herokuapp.com/no", function( data, err ) {
+  $.get("http://localhost:5000/no", function( data, err ) {
     if(!err) throw  err
-    $('#noV').html(' '+data)
-    console.log(data)
+    $('#noV').html(data)
+    console.log("No: "+data)
   });
 })
 
 $("#noSe").click(function(){
-  $.get("https://votation-up.herokuapp.com/noSe", function( data, err ) {
+  $.get("http://localhost:5000/noSe", function( data, err ) {
     if(!err) throw  err
     $('#noSeV').html(' '+data)
-    console.log(data+' noSe')
+    console.log("No Sé: "+data)
   });
 })

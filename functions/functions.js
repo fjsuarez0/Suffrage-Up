@@ -1,9 +1,54 @@
 const components = require('./components')
 const models = require("../model/schema_model")
-const date = new Date()
+const moment = require("moment")
+const date = moment.unix()
 	
 	module.exports = {
-		
+			configureDB: () => {
+				Promise.all([
+					components.settingDB_Si(),
+					components.settingDB_NoSe(),
+					components.settingDB_No()
+				]).then((response) => {
+				const message = response.reduce((previus, current) => {
+					return previus+" "+current
+				})
+				console.log(message) // La Base de Datos esta limpia y configurada ;			        		
+    		}).catch((err) => {
+    			console.error(err)
+   			})				
+   		},
+
+			truncateAll: (req, res) => {
+			   
+			    Promise.all([			    
+			      components.truncateSi(),
+			      components.truncateNoSe(),
+			      components.truncateNo()
+			    ]).then( (response) => {
+			    	
+			    	var log = response.reduce((previus, current) => {
+			    		return previus+" "+current
+			    	})			     			    	
+			    	console.log(log+": Arepa") // Welcome to Javascript ;)
+			    }).catch( (err) => {			         
+			    	console.log(err)
+			    })		 		
+
+					Promise.all([
+						components.settingDB_Si(),
+						components.settingDB_NoSe(),
+						components.settingDB_No()
+					]).then((response) => {
+					const message = response.reduce((previus, current) => {
+						return previus+" "+current
+					})
+					console.log(message) 
+					}).catch((err) => {
+						console.error(err)
+					})						
+					res.status(200).send("All is great")
+			},
 			winner: (req, res) => {
 
 			    Promise.all([			    
@@ -11,28 +56,36 @@ const date = new Date()
 			      components.lastValueNoSe(),
 			      components.lastValueNo()
 			    ]).then( (response) => {
+			   		
+			   		if (response[0] == null, response[1] == null, response[2] == null) {
+	
+			    		configureDB() 					    	
+	
+			    	} 
+	
+			    	const si = response[0].vote
 
-			        const si = response[0].vote
+		        const noSe = response[1].vote
 
-			        const noSe = response[1].vote
+		        const no = response[2].vote			    				  	
+			    					       				        
+		        if (si > no && si > noSe) {
 
-			        const no = response[2].vote
+		          res.send("Si")
 
-			        if(si > no && si > noSe){
+		        } else if(no > si && no > noSe){
 
-			          res.send("Si")
+		          res.send("No")
 
-			        } else if(no > si && no > noSe){
+		        } else if(noSe > no && noSe > si){
 
-			          res.send("No")
+		          res.send("No se")
 
-			        } else if(noSe > no && noSe > si){
+		        } else {
+		          res.send("Empate")
 
-			          res.send("No se")
 
-			        } else {
-			          res.send("Empate")
-			        }
+		        }
 
 			    }).catch( (err) => {
 			        
@@ -40,6 +93,7 @@ const date = new Date()
 
 			    })		 		
 			},
+		
 
 			pushVoteSi: (req, res) => {
 
@@ -54,8 +108,7 @@ const date = new Date()
 
 
 			    	let votePlus = siDocs.vote+1
-			    	const pointSi  = new 
-			    	models.models[0]({vote: votePlus, date: date})
+			    	const pointSi  = new  models.models[0]({vote: votePlus, date: date})
 			      	pointSi.save((err, data) => {
 			        
 				        if(err){
@@ -64,7 +117,7 @@ const date = new Date()
 				        
 				        }
 				        const lastVote = (data.vote).toString()
-				        
+				        console.log(lastVote)
 				        res.send(lastVote)
 			      })
 

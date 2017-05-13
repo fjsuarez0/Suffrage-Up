@@ -1,28 +1,4 @@
-<html>
-  <head>
-    <title>Suffrage-up</title>
-        <!-- Latest compiled and minified CSS -->
-
-    <link rel="stylesheet" href="/style.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
-
-  </head>
-  <body>
-    <script type="text/javascript">
-    </script>
-    <div id="messages"></div>
     <div class="navbar">
-            <!-- Static navbar -->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -32,48 +8,31 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a id="nameHead" class="navbar-brand" href="#">Suffrage-Up</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
+              <li><img src="" alt=""></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
               <button type="button" id="sing-up" class="btn btn-success btn-sm" name="button"><strong>Sign Up</strong><strong id="noVe"></strong></button>
               </li>
-                <li></li>
-
               <li>
               <button type="button" id="sing-out" class="btn btn-danger btn-sm" name="button"><strong>Sign Out</strong><strong id="noVe"></strong></button>
               </li>
             </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+          </div>
+        </div>
       </nav>
 
     </div>
     <div class="container">
-
       <div class="row" align="center">
         <div class="jumbotron">
-          <h1>¿Eres Gay?</h1>
+          <h1>¿Eres Desarrollador?</h1>
           <p class="text-muted">Winner Option:<br/ ><strong id="winnerOpt">No se</strong></p>
-
+          <p id="status"></p>
         </div>
         <div class="col-md-4 well">
 
@@ -87,18 +46,128 @@
           <button type="button" id="no" class="btn btn-danger btn-lg" name="button"><strong>No:</strong><strong id="noV"></strong></button>
         </div>
         <script src="main.js"></script>
-        <script src="actions.js"></script>
         <meta charset="utf-8">
+        <script src="https://www.gstatic.com/firebasejs/3.8.0/firebase.js"></script>
+
+       
         <script type="text/javascript">
-          // Initialize Firebase
-          // TODO: Replace with your project's customized code snippet
-          var config = {
-          apiKey: "suffrage-up-9cd20",
-          authDomain: "suffrage-up-9cd20.firebaseapp.com",
-          };
-          firebase.initializeApp(config);
+        var config = {
+         apiKey: "AIzaSyCpymD43UCWOJ5wgeupT13lVmo45nT75Nw",
+         authDomain: "suffrage-up-9cd20.firebaseapp.com",
+         databaseURL: "https://suffrage-up-9cd20.firebaseio.com",
+         projectId: "suffrage-up-9cd20",
+         storageBucket: "suffrage-up-9cd20.appspot.com",
+         messagingSenderId: "580302035473"
+        };
+
+        firebase.initializeApp(config);
+        </script>
+
+
+        <script type="text/javascript">
+        
+        var singUp = document.getElementById('sing-up');
+        var singOut = document.getElementById('sing-out');
+
+    /**
+     * Function called when clicking the Login/Logout button.
+     */
+    // [START buttoncallback]
+    function toggleSignIn() {
+      if (!firebase.auth().currentUser) {
+        // [START createprovider]
+        var provider = new firebase.auth.GoogleAuthProvider();
+        // [END createprovider]
+        // [START addscopes]
+        provider.addScope('https://www.googleapis.com/auth/plus.login');
+        // [END addscopes]
+        // [START signin]
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+
+          // The signed-in user info.
+          var user = result.user;
+
+          console.log("Hola "+user.displayName.split(" ")[0]+" ;)")
+
+          // [END_EXCLUDE]
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/account-exists-with-different-credential') {
+            alert('You have already signed up with a different auth provider for that email.');
+            // If you are using multiple auth providers on your app you should handle linking
+            // the user's accounts here.
+          } else {
+            console.error(error);
+          }
+          // [END_EXCLUDE]
+        });
+        // [END signin]
+      } else {
+        // [START signout]
+        firebase.auth().signOut()
+        // [END signout]
+      }
+      // [START_EXCLUDE]
+      document.getElementById('sing-up').disabled = true;
+      // [END_EXCLUDE]
+    }
+
+    function singOutA(){
+      firebase.auth().signOut().then(()=>{
+        document.getElementById('sing-out').disabled = true;
+        location.reload();
+      }).catch((error)=>{
+        console.log(error)
+      });
+
+           }    
+    // [END buttoncallback]
+    /**
+     * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+     *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+     *    out, and that is where we update the UI.
+     */
+    function initApp() {
+      // Listening for auth state changes.
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          var isAnonymous = user.isAnonymous;
+          var uid = user.uid;
+          var providerData = user.providerData;
+          // [START_EXCLUDE]
+          document.getElementById('nameHead').textContent = displayName;
+          document.getElementsByTagName('IMG')[0].setAttribute('src', photoURL)
+          document.getElementsByTagName('IMG')[0].className += 'small img-resoponsive img-circle'
+
+          // [END_EXCLUDE]
+        } else {
+          // User is signed out.
+          // [START_EXCLUDE]
+          // [END_EXCLUDE]
+        }
+        // [START_EXCLUDE]
+        // [END_EXCLUDE]
+      });
+      // [END authstatelistener]
+      document.getElementById('sing-up').addEventListener('click', toggleSignIn, false);
+      document.getElementById('sing-out').addEventListener('click', singOutA, false);
+
+    }
+    window.onload = function() {
+      initApp();
+    };
         </script>
       </div>
+        <script src="actions.js"></script>
 
     </div>
   </body>

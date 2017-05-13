@@ -43,6 +43,8 @@ app.get('/no', (functions.pushVoteNo))
 
 app.get('/winner', (functions.winner))
 
+app.get('/truncate', (functions.truncateAll))
+
 app.get('/', (req, res)=>{
   res.render('home')
 })
@@ -51,7 +53,7 @@ app.get('/', (req, res)=>{
 
 /// Real Time
 server.listen(6969, () => {
-  console.log('Hey Como estan las cosas')
+  console.log('¿Hey Como estan las cosas?')
 })
 io.on('connection', (socket) => {
   console.log('cliente conectado')
