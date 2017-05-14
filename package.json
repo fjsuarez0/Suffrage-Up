@@ -1,14 +1,16 @@
 {
-  "name": "clear",
+  "name": "Suffrage-vup",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "Suffrage System in: {Node.js}",
+  "main": "index.js",
   "scripts": {
-    "start": "node-dev index.js",
-    "dev": "node-dev index.js",
-    "build": "console.log(´Hello ´)",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjsuarez0/Suffrage-vup.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,8 +21,9 @@
     "moments": "0.0.2",
     "mongoose": "^4.9.0",
     "socket.io": "^1.7.3"
+  },  
+  "bugs": {
+    "url": "https://github.com/fjsuarez0/Suffrage-vup/issues"
   },
-  "engines": {
-    "node": "6.10.1"
-  }
+  "homepage": "https://github.com/fjsuarez0/Suffrage-vup#readme"
 }
