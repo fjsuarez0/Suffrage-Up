@@ -53,7 +53,7 @@ app.get('/', (req, res)=>{
 
 /// Real Time
 
-server.listen(PORT, () => {
+server.listen(port, () => {
   console.log('¿Hey Como estan las cosas?')
 })
 
