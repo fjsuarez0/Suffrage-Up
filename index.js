@@ -9,7 +9,7 @@ const components = require("./functions/components")
 const functions = require("./functions/functions")
 const models = require("./model/schema_model")
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 9000
 // Middleswares Configuration
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
@@ -53,7 +53,7 @@ app.get('/', (req, res)=>{
 
 /// Real Time
 
-server.listen(port, () => {
+server.listen(6969, () => {
   console.log('¿Hey Como estan las cosas?')
 })
 
