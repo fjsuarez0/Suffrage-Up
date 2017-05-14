@@ -1,6 +1,6 @@
 (function worker(){
     var request = $.ajax({
-                    url: "http://votation-up.herokuapp.com/winner",
+                    url: "https://votation-up.herokuapp.com/winner",
                     dataType: "text"
                   });
                   request.done(function( msg ) {
@@ -14,7 +14,7 @@
 })()
 
 $("#si").click(function(){
-    $.get("http://votation-up.herokuapp.com/si", function( data, err ) {
+    $.get("https://votation-up.herokuapp.com/si", function( data, err ) {
     if(!err) throw  err
     $('#siV').html(data)
     console.log("Sí: "+data)
@@ -22,7 +22,7 @@ $("#si").click(function(){
 })
 
 $("#no").click(function(){
-  $.get("http://votation-up.herokuapp.com/no", function( data, err ) {
+  $.get("https://votation-up.herokuapp.com/no", function( data, err ) {
     if(!err) throw  err
     $('#noV').html(data)
     console.log("No: "+data)
@@ -30,7 +30,7 @@ $("#no").click(function(){
 })
 
 $("#noSe").click(function(){
-  $.get("http://votation-up.herokuapp.com/noSe", function( data, err ) {
+  $.get("https://votation-up.herokuapp.com/noSe", function( data, err ) {
     if(!err) throw  err
     $('#noSeV').html(' '+data)
     console.log("No Sé: "+data)
