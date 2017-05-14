@@ -8,32 +8,6 @@ const mongoose = require('mongoose')
 const components = require("./functions/components")
 const functions = require("./functions/functions")
 const models = require("./model/schema_model")
-
-const path = require('path')
-
-const express = require('express')
-
-const app = express()
-
-const server = require('http').Server(app)
-
-const io = require('socket.io')(server)
-
-const exphbs = require('express-handlebars')
-
-const mongoose = require('mongoose')
-
-const functions = require('./functions/functions')
-
-const models = require('./model/schema_model')
-
-const moment = require('moment')
-
-const d = moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
-
-const admin = require('firebase-admin')
-
-
 const port = process.env.PORT || 9000
 // Middleswares Configuration
 app.engine('.hbs', exphbs({
