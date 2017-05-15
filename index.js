@@ -1,11 +1,11 @@
 const path = require('path')
 const express = require('express')
+const socketIO = require('socket.io')
 const app = express()
+const io = socketIO(app)
 //const server = require('http').Server(app)
 //const io = require('socket.io')(server)
-const socketIO = require('socket.io')
 
-const io = socketIO()
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const components = require("./functions/components")
@@ -60,7 +60,7 @@ server.listen(6969, () => {
 })
 */
 io.on('connection', (socket) => {
-  console.log('cliente conectado')
+  console.log('cliente conectado')  
   socket.emit('messages', 'Epa todo salio bien')
 })
 /// Real Time
