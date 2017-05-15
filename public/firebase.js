@@ -90,7 +90,7 @@
           document.getElementById('nameHead').textContent = displayName;
           document.getElementsByTagName('IMG')[0].setAttribute('src', photoURL)
           document.getElementsByTagName('IMG')[0].className += 'small img-resoponsive img-circle'
-          document.getElementById('sing-out').disabled = true;
+          document.getElementById('sing-up').disabled = true;
           
           alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto;)')
             setTimeout(function() {
