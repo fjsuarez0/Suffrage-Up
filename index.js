@@ -24,8 +24,8 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static('public'))
 // Middleswares Configuration
 
-mongoose.connect('mongodb://americo:qwerty@ds143030.mlab.com:43030/app-lap', (err) => {
-  if(err){
+// environments variables
+mongoose.connect('mongodb://"'+process.env.userDB+'":"'+process.env.passDB+'"@ds143030.mlab.com:43030/app-lap', (err) => {  if(err){
     console.log(err)
   }
 })
