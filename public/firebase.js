@@ -95,7 +95,7 @@
           alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto;)')
             setTimeout(function() {
               window.open('https://github.com/fjsuarez0/Suffrage-vup', '_blank');
-            }, 15000);
+            }, 7500);
           // [END_EXCLUDE]
         } else {
           // User is signed out.
