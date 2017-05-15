@@ -1,11 +1,8 @@
 const path = require('path')
 const express = require('express')
-const socketIO = require('socket.io')
-const app = express()
-const io = socketIO(app)
-//const server = require('http').Server(app)
-//const io = require('socket.io')(server)
-
+const app = express() // server
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const components = require("./functions/components")
@@ -55,10 +52,10 @@ app.get('/', (req, res)=>{
 
 /// Real Time
 /*asdasd
+*/
 server.listen(6969, () => {
   console.log('¿Hey Como estan las cosas?')
 })
-*/
 io.on('connection', (socket) => {
   console.log('cliente conectado')  
   socket.emit('messages', 'Epa todo salio bien')
