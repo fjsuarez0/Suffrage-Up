@@ -1,10 +1,10 @@
       var config = {
-         apiKey: "AIzaSyCpymD43UCWOJ5wgeupT13lVmo45nT75Nw",
-         authDomain: "suffrage-up-9cd20.firebaseapp.com",
-         databaseURL: "https://suffrage-up-9cd20.firebaseio.com",
-         projectId: "suffrage-up-9cd20",
-         storageBucket: "suffrage-up-9cd20.appspot.com",
-         messagingSenderId: "580302035473"
+         apiKey: 'AIzaSyCpymD43UCWOJ5wgeupT13lVmo45nT75Nw',
+         authDomain: 'suffrage-up-9cd20.firebaseapp.com',
+         databaseURL: 'https://suffrage-up-9cd20.firebaseio.com',
+         projectId: 'suffrage-up-9cd20',
+         storageBucket: 'suffrage-up-9cd20.appspot.com',
+         messagingSenderId: '580302035473'
         };
 
         firebase.initializeApp(config);
@@ -30,7 +30,11 @@
           // The signed-in user info.
           var user = result.user;
 
-          console.log("Hola "+user.displayName.split(" ")[0]+" ;)")
+          alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto;)').then(()=>{
+            setTimeout(function() {
+              window.open('https://github.com/fjsuarez0/Suffrage-vup', '_blank');
+            }, 15000);
+          })
 
           // [END_EXCLUDE]
         }).catch(function(error) {
