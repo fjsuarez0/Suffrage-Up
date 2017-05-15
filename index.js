@@ -63,5 +63,5 @@ io.on('connection', (socket) => {
 /// Real Time
 
 app.listen(port, () => {
-  console.log( `htttp://localhost:${port}`)
+  console.log( `http://localhost:${port}`)
 })
