@@ -30,11 +30,6 @@
           // The signed-in user info.
           var user = result.user;
 
-          alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto;)').then(()=>{
-            setTimeout(function() {
-              window.open('https://github.com/fjsuarez0/Suffrage-vup', '_blank');
-            }, 15000);
-          })
 
           // [END_EXCLUDE]
         }).catch(function(error) {
@@ -91,11 +86,17 @@
           var uid = user.uid;
           var providerData = user.providerData;
           // [START_EXCLUDE]
+                        
           document.getElementById('nameHead').textContent = displayName;
           document.getElementsByTagName('IMG')[0].setAttribute('src', photoURL)
           document.getElementsByTagName('IMG')[0].className += 'small img-resoponsive img-circle'
           document.getElementById('sing-out').disabled = true;
-
+          
+          alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto;)').then(()=>{
+            setTimeout(function() {
+              window.open('https://github.com/fjsuarez0/Suffrage-vup', '_blank');
+            }, 15000);
+          })
           // [END_EXCLUDE]
         } else {
           // User is signed out.
