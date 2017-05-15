@@ -94,6 +94,7 @@
           document.getElementById('nameHead').textContent = displayName;
           document.getElementsByTagName('IMG')[0].setAttribute('src', photoURL)
           document.getElementsByTagName('IMG')[0].className += 'small img-resoponsive img-circle'
+          document.getElementById('sing-out').disabled = true;
 
           // [END_EXCLUDE]
         } else {
