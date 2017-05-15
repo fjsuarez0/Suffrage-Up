@@ -92,7 +92,7 @@
           document.getElementsByTagName('IMG')[0].className += 'small img-resoponsive img-circle'
           document.getElementById('sing-up').disabled = true;
           
-          alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto;)')
+          alert('Hola '+user.displayName.split(' ')[0]+', gracias por ver mi pequeño proyecto ;)')
             setTimeout(function() {
               window.open('https://github.com/fjsuarez0/Suffrage-vup', '_blank');
             }, 7500);
