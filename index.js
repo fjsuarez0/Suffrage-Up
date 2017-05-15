@@ -51,8 +51,7 @@ app.get('/', (req, res)=>{
 // APP
 
 /// Real Time
-/*asdasd
-*/
+
 server.listen(6969, () => {
   console.log('¿Hey Como estan las cosas?')
 })
