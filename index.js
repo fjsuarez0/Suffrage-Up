@@ -28,10 +28,7 @@ app.use(express.static('public'))
 console.log(process.env)
 console.log(process.env.userDB)
 console.log(process.env.passDB)
-mongoose.connect('mongodb://americo:qwerty@ds143030.mlab.com:43030/app-lap', (err) => {  
-
-	if(err){
-
+mongoose.connect('mongodb://"'+process.env.userDB+'":"'+process.env.passDB+'"@ds143030.mlab.com:43030/app-lap', (err) => {  if(err){
     console.log(err)
   }
 })
