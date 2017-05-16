@@ -25,6 +25,9 @@ app.use(express.static('public'))
 // Middleswares Configuration
 
 // environments variables
+console.log(process.env)
+console.log(process.env.userDB)
+console.log(process.env.passDB)
 mongoose.connect('mongodb://"'+process.env.userDB+'":"'+process.env.passDB+'"@ds143030.mlab.com:43030/app-lap', (err) => {  if(err){
     console.log(err)
   }
